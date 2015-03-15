@@ -1,0 +1,5 @@
+build/coverage
+composer.lock
+docs/
+vendor/
+tests/repository/
