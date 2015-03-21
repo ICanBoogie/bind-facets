@@ -40,7 +40,7 @@
 		"icanboogie": {
 			"config-path": "config",
 			"config-constructor": {
-				"activerecord.facets": "ICanBoogie\\Facets\\Hooks::synthesize_config#activerecord"
+				"activerecord.facets": "ICanBoogie\\Binding\\Facets\\Hooks::synthesize_config#activerecord"
 			}
 		}
 	}
