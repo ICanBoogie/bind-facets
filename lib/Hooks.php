@@ -117,18 +117,27 @@ class Hooks
 	/**
 	 * Fetches the records matching the specified conditions.
 	 *
-	 * A {@link Fetcher} instance is used to fetch the records.
+	 * A {@link Fetcher} instance is used to fetch the records. The `alter` event of class
+	 * {@link RecordCollection\AlterEvent} is fired before the record collection is returned.
 	 *
 	 * @param Model $model
 	 * @param array $conditions
 	 *
-	 * @return RecordCollection
+	 * @return RecordCollection|null
 	 */
 	static public function fetch_records(Model $model, array $conditions)
 	{
 		$fetcher = new Fetcher($model);
+		$records = $fetcher($conditions);
 
-		return $fetcher($conditions);
+		if (!$records)
+		{
+			return null;
+		}
+
+		new RecordCollection\AlterEvent($records);
+
+		return $records;
 	}
 
 	/**
