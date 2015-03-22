@@ -11,10 +11,12 @@
 
 namespace ICanBoogie\Binding\Facets;
 
+use ICanBoogie\ActiveRecord;
 use ICanBoogie\ActiveRecord\Model;
 use ICanBoogie\Core;
 use ICanBoogie\Facets\CriterionList;
 use ICanBoogie\Facets\Fetcher;
+use ICanBoogie\Facets\RecordCollection;
 
 class Hooks
 {
@@ -119,12 +121,10 @@ class Hooks
 	 *
 	 * @param Model $model
 	 * @param array $conditions
-	 * @param Fetcher $fetcher If the parameter `fetcher` is present, the {@link Fetcher}
-	 * instance created to fetch the records is stored inside.
 	 *
-	 * @return array
+	 * @return RecordCollection
 	 */
-	static public function fetch_records(Model $model, array $conditions, &$fetcher = null)
+	static public function fetch_records(Model $model, array $conditions)
 	{
 		$fetcher = new Fetcher($model);
 
@@ -141,18 +141,21 @@ class Hooks
 	 * @param Fetcher $fetcher If the parameter `fetcher` is present, the {@link Fetcher}
 	 * instance created to fetch the record is stored inside.
 	 *
-	 * @return \ICanBoogie\ActiveRecord|null
+	 * @return ActiveRecord|null
 	 */
 	static public function fetch_record(Model $model, array $conditions, &$fetcher = null)
 	{
-		// `$model->fetch_records` would be best but it causes a reference problem :(
-		$records = self::fetch_records($model, $conditions + [ 'limit' => 1 ], $fetcher);
+		/* @var $records RecordCollection */
+
+		$records = $model->fetch_records($conditions + [ 'limit' => 1 ]);
 
 		if (!$records)
 		{
 			return null;
 		}
 
-		return reset($records);
+		$fetcher = $records->fetcher;
+
+		return $records->one;
 	}
 }

@@ -20,9 +20,9 @@
 	},
 
 	"require": {
-		"php": ">=5.4.0",
+		"php": ">=5.5.0",
 		"icanboogie/icanboogie": ">=2.3.0",
-		"icanboogie/facets": "dev-master",
+		"icanboogie/facets": ">=0.3.0",
 		"icanboogie/bind-activerecord": "~0.2.1"
 	},
 
