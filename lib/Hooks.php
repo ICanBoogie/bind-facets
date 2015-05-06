@@ -93,7 +93,7 @@ class Hooks
 	/**
 	 * Returns the {@link CriterionList} instance associated with the specified model.
 	 *
-	 * @param Model $model
+	 * @param Model|HasCriteriaProperty $model
 	 *
 	 * @return CriterionList
 	 */
@@ -145,17 +145,15 @@ class Hooks
 	 *
 	 * The model's {@link fetch_records} prototype method is used to retrieve the record.
 	 *
-	 * @param Model $model
+	 * @param Model|HasFetchRecordsMethod $model
 	 * @param array $conditions
 	 * @param Fetcher $fetcher If the parameter `fetcher` is present, the {@link Fetcher}
-	 * instance created to fetch the record is stored inside.
+	 * instance used to fetch the record is stored inside.
 	 *
 	 * @return ActiveRecord|null
 	 */
 	static public function fetch_record(Model $model, array $conditions, &$fetcher = null)
 	{
-		/* @var $records RecordCollection */
-
 		$records = $model->fetch_records($conditions + [ 'limit' => 1 ]);
 
 		if (!$records)

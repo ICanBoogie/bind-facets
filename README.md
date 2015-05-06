@@ -7,8 +7,46 @@
 [![Code Coverage](https://img.shields.io/coveralls/ICanBoogie/bind-facets/master.svg)](https://coveralls.io/r/ICanBoogie/bind-facets)
 [![Packagist](https://img.shields.io/packagist/dt/icanboogie/bind-facets.svg)](https://packagist.org/packages/icanboogie/bind-facets)
 
-The **icanboogie/bind-facets** package binds [icanboogie/facets][] to [ICanBoogie][], using its
-autoconfig feature.
+The **icanboogie/bind-facets** package binds [icanboogie/facets][] to [ICanBoogie][], using its autoconfig feature, and provides the following features:
+
+- A synthesizer for the `activerecord.facets` config.
+- A `criteria` prototype property for [Model][] instances.
+- A `criterion_list` prototype property for [Model][] instances.
+- A `fetch_record()` prototype method for [Model][] instances.
+- A `fetch_records()` prototype method for [Model][] instances.
+
+
+
+
+
+## Hint interfaces
+
+Because most features are provided through prototype methods, your favorite editor might complain about unknown methods, the following interfaces can be used to provide hints:
+
+- `HasCriteriaProperty`: Indicates that a model instance has a `criteria` property.
+- `HasCriterionListProperty`: Indicates that a model instance has a `criterion_list` property.
+- `HasFetchRecordMethod`: Indicates that an instance has a `fetch_record` method, whether it is a class method or a prototype one.
+- `HasFetchRecordsMethod`: Indicates that an instance has a `fetch_records` method, whether it is a class method or a prototype one.
+
+The following example demonstrates how to hint your code about a `fetch_records` method. Notice the type hint in the annotation `Model|HasFetchRecordMethod`:
+
+```php
+<?php
+
+use ICanBoogie\ActiveRecord\Model;
+use ICanBoogie\Binding\Facets\HasFetchRecordMethod;
+use ICanBoogie\Facets\RecordCollection;
+
+/**
+ * @param Model|HasFetchRecordMethod
+ * 
+ * @return RecordCollection
+ */
+function fetch(Model $model, array $conditions)
+{
+	return $model->fetch_records($conditions;
+}
+```
 
 
 
@@ -62,7 +100,7 @@ The package is documented as part of the [ICanBoogie][] framework
 
 ## Testing
 
-The test suite is ran with the `make test` command. [PHPUnit](https://phpunit.de/) and [Composer](http://getcomposer.org/) need to be globally available to run the suite. The command installs dependencies as required. The `make test-coverage` command runs test suite and also creates an HTML coverage report in "build/coverage". The directory can later be cleaned with the `make clean` command.
+The test suite is ran with the `make test` command. [PHPUnit](https://phpunit.de/) and [Composer](http://getcomposer.org/) need to be globally available to run the suite. The command installs dependencies as required. The `make test-coverage` command runs test suite and also creates an HTML coverage report in `build/coverage`. The directory can later be cleaned with the `make clean` command.
 
 The package is continuously tested by [Travis CI](http://about.travis-ci.org/).
 
@@ -83,9 +121,5 @@ The package is continuously tested by [Travis CI](http://about.travis-ci.org/).
 
 [icanboogie/module]: https://github.com/ICanBoogie/Module
 [icanboogie/facets]: https://github.com/ICanBoogie/Render
-[icanboogie/view]: https://github.com/ICanBoogie/View
 [ICanBoogie]: https://github.com/ICanBoogie/ICanBoogie
-[ApplicationTemplateResolver]: http://icanboogie.org/docs/class-ICanBoogie.Binding.Render.ApplicationTemplateResolver.html
-[Core]: http://icanboogie.org/docs/class-ICanBoogie.Core.html
-[BasicTemplateResolver]: http://icanboogie.org/docs/class-ICanBoogie.Render.BasicTemplateResolver.html
-[TemplateResolver\AlterEvent]: http://icanboogie.org/docs/class-ICanBoogie.Render.TemplateResolver.AlterEvent.html
+[Model]: http://icanboogie.org/docs/class-ICanBoogie.ActiveRecord.Model.html
