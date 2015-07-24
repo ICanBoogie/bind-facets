@@ -4,7 +4,7 @@ namespace ICanBoogie\Binding\Facets;
 
 use ICanBoogie\ActiveRecord\Model;
 
-$hooks = __NAMESPACE__ . '\Hooks::';
+$hooks = Hooks::class . '::';
 
 return [
 
