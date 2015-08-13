@@ -93,7 +93,7 @@ class Hooks
 	/**
 	 * Returns the {@link CriterionList} instance associated with the specified model.
 	 *
-	 * @param Model|HasCriteriaProperty $model
+	 * @param Model|ModelBindings $model
 	 *
 	 * @return CriterionList
 	 */
@@ -145,7 +145,7 @@ class Hooks
 	 *
 	 * The model's {@link fetch_records} prototype method is used to retrieve the record.
 	 *
-	 * @param Model|HasFetchRecordsMethod $model
+	 * @param Model|ModelBindings $model
 	 * @param array $conditions
 	 * @param Fetcher $fetcher If the parameter `fetcher` is present, the {@link Fetcher}
 	 * instance used to fetch the record is stored inside.
