@@ -13,7 +13,7 @@ namespace ICanBoogie\Binding\Facets;
 
 use ICanBoogie\ActiveRecord;
 use ICanBoogie\ActiveRecord\Model;
-use ICanBoogie\Binding\ObjectBindings;
+use ICanBoogie\Binding\PrototypedBindings;
 use ICanBoogie\Core;
 use ICanBoogie\Facets\CriterionList;
 use ICanBoogie\Facets\Fetcher;
@@ -60,7 +60,7 @@ class Hooks
 	 *
 	 * The criteria include the criteria of the parent models.
 	 *
-	 * @param Model|ObjectBindings $model
+	 * @param Model|PrototypedBindings $model
 	 *
 	 * @return array
 	 */
