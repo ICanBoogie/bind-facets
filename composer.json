@@ -22,10 +22,10 @@
 	"minimum-stability": "dev",
 
 	"require": {
-		"php": ">=5.5.0",
-		"icanboogie/icanboogie": "^2.4",
+		"php": ">=5.5",
+		"icanboogie/icanboogie": "^3.0",
 		"icanboogie/facets": "^0.4",
-		"icanboogie/bind-activerecord": "^0.3"
+		"icanboogie/bind-activerecord": "^1.0"
 	},
 
 	"autoload": {
