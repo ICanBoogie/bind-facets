@@ -7,9 +7,10 @@
 [![Code Coverage](https://img.shields.io/coveralls/ICanBoogie/bind-facets/master.svg)](https://coveralls.io/r/ICanBoogie/bind-facets)
 [![Packagist](https://img.shields.io/packagist/dt/icanboogie/bind-facets.svg)](https://packagist.org/packages/icanboogie/bind-facets)
 
-The **icanboogie/bind-facets** package binds [icanboogie/facets][] to [ICanBoogie][], using its autoconfig feature, and provides the following features:
+The **icanboogie/bind-facets** package binds [icanboogie/facets][] to [ICanBoogie][],
+using its autoconfig feature, and provides the following features:
 
-- A synthesizer for the `activerecord.facets` config.
+- A synthesizer for the `activerecord_facets` config.
 - A `criteria` prototype property for [Model][] instances.
 - A `criterion_list` prototype property for [Model][] instances.
 - A `fetch_record()` prototype method for [Model][] instances.
@@ -19,26 +20,23 @@ The **icanboogie/bind-facets** package binds [icanboogie/facets][] to [ICanBoogi
 
 
 
-## Hint interfaces
+## Hinting prototype bindings
 
-Because most features are provided through prototype methods, your favorite editor might complain about unknown methods, the following interfaces can be used to provide hints:
+Because most features are provided through prototype methods, your favorite editor might
+complain about unknown methods, in which case simply use the [ModelBindings][] trait.
 
-- `HasCriteriaProperty`: Indicates that a model instance has a `criteria` property.
-- `HasCriterionListProperty`: Indicates that a model instance has a `criterion_list` property.
-- `HasFetchRecordMethod`: Indicates that an instance has a `fetch_record` method, whether it is a class method or a prototype one.
-- `HasFetchRecordsMethod`: Indicates that an instance has a `fetch_records` method, whether it is a class method or a prototype one.
-
-The following example demonstrates how to hint your code about a `fetch_records` method. Notice the type hint in the annotation `Model|HasFetchRecordMethod`:
+The following example demonstrates how to hint your code about a `fetch_records` method.
+Notice the type hint in the annotation `Model|ModelBindings`:
 
 ```php
 <?php
 
 use ICanBoogie\ActiveRecord\Model;
-use ICanBoogie\Binding\Facets\HasFetchRecordMethod;
+use ICanBoogie\Binding\Facets\ModelBindings;
 use ICanBoogie\Facets\RecordCollection;
 
 /**
- * @param Model|HasFetchRecordMethod
+ * @param Model|ModelBindings
  * 
  * @return RecordCollection
  */
@@ -92,7 +90,10 @@ cloned with the following command line:
 ## Documentation
 
 The package is documented as part of the [ICanBoogie][] framework
-[documentation](http://icanboogie.org/docs/). You can generate the documentation for the package and its dependencies with the `make doc` command. The documentation is generated in the `build/docs` directory. [ApiGen](http://apigen.org/) is required. The directory can later be cleaned with the `make clean` command.
+[documentation][]. You can generate the documentation for the
+package and its dependencies with the `make doc` command. The documentation is generated in the
+`build/docs` directory. [ApiGen](http://apigen.org/) is required. The directory can later be
+cleaned with the `make clean` command.
 
 
 
@@ -100,7 +101,11 @@ The package is documented as part of the [ICanBoogie][] framework
 
 ## Testing
 
-The test suite is ran with the `make test` command. [PHPUnit](https://phpunit.de/) and [Composer](http://getcomposer.org/) need to be globally available to run the suite. The command installs dependencies as required. The `make test-coverage` command runs test suite and also creates an HTML coverage report in `build/coverage`. The directory can later be cleaned with the `make clean` command.
+The test suite is ran with the `make test` command. [PHPUnit](https://phpunit.de/) and
+[Composer](http://getcomposer.org/) need to be globally available to run the suite.
+The command installs dependencies as required. The `make test-coverage` command runs test suite and
+also creates an HTML coverage report in "build/coverage". The directory can later be cleaned with
+the `make clean` command.
 
 The package is continuously tested by [Travis CI](http://about.travis-ci.org/).
 
@@ -118,8 +123,10 @@ The package is continuously tested by [Travis CI](http://about.travis-ci.org/).
 
 
 
+[documentation]: http://api.icanboogie.org/bind-facets/1.0/
+[Model]:         http://api.icanboogie.org/activerecord/2.3/class-ICanBoogie.ActiveRecord.Model.html
+[ModelBindings]: http://api.icanboogie.org/bind-facets/1.0/class-ICanBoogie.Binding.Facets.ModelBindings.html
 
 [icanboogie/module]: https://github.com/ICanBoogie/Module
 [icanboogie/facets]: https://github.com/ICanBoogie/Render
-[ICanBoogie]: https://github.com/ICanBoogie/ICanBoogie
-[Model]: http://icanboogie.org/docs/class-ICanBoogie.ActiveRecord.Model.html
+[ICanBoogie]:        https://github.com/ICanBoogie/ICanBoogie
