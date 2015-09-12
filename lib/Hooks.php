@@ -22,7 +22,7 @@ use ICanBoogie\Facets\RecordCollection;
 class Hooks
 {
 	/**
-	 * Synthesizes the `activerecord.facets` config from `activerecord` fragments.
+	 * Synthesizes the `activerecord_facets` config from `activerecord` fragments.
 	 *
 	 * @param array $fragments
 	 *
@@ -67,7 +67,7 @@ class Hooks
 	static public function criteria_from(Model $model)
 	{
 		$criteria_list = [];
-		$facets = $model->app->configs['activerecord.facets'];
+		$facets = $model->app->configs['activerecord_facets'];
 
 		$m = $model;
 
