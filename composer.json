@@ -25,7 +25,7 @@
 		"php": ">=5.5",
 		"icanboogie/icanboogie": "^3.0",
 		"icanboogie/facets": "^0.4",
-		"icanboogie/bind-activerecord": "^1.0"
+		"icanboogie/bind-activerecord": "^2.3"
 	},
 
 	"autoload": {
