@@ -17,6 +17,7 @@ use ICanBoogie\Binding\PrototypedBindings;
 use ICanBoogie\Core;
 use ICanBoogie\Facets\CriterionList;
 use ICanBoogie\Facets\Fetcher;
+use ICanBoogie\Facets\Fetcher\BasicFetcher;
 use ICanBoogie\Facets\RecordCollection;
 
 class Hooks
@@ -118,8 +119,7 @@ class Hooks
 	/**
 	 * Fetches the records matching the specified conditions.
 	 *
-	 * A {@link Fetcher} instance is used to fetch the records. The `alter` event of class
-	 * {@link RecordCollection\AlterEvent} is fired before the record collection is returned.
+	 * A {@link BasicFetcher} instance is used to fetch the records.
 	 *
 	 * @param Model $model
 	 * @param array $conditions
@@ -128,7 +128,7 @@ class Hooks
 	 */
 	static public function fetch_records(Model $model, array $conditions)
 	{
-		$fetcher = new Fetcher($model);
+		$fetcher = new BasicFetcher($model);
 		$records = $fetcher($conditions);
 
 		if (!$records)

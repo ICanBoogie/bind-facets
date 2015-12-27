@@ -24,7 +24,7 @@
 	"require": {
 		"php": ">=5.5",
 		"icanboogie/icanboogie": "^3.0",
-		"icanboogie/facets": "^0.4",
+		"icanboogie/facets": "^0.5",
 		"icanboogie/bind-activerecord": "^2.3"
 	},
 
