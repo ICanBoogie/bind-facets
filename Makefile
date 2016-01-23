@@ -1,7 +1,7 @@
 # customization
 
 PACKAGE_NAME = icanboogie/bind-facets
-PACKAGE_VERSION = 0.5
+PACKAGE_VERSION = 0.6
 
 # do not edit the following lines
 

@@ -123,9 +123,9 @@ The package is continuously tested by [Travis CI](http://about.travis-ci.org/).
 
 
 
-[Model]:         http://api.icanboogie.org/activerecord/2.3/class-ICanBoogie.ActiveRecord.Model.html
-[documentation]: http://api.icanboogie.org/bind-facets/0.5/
-[ModelBindings]: http://api.icanboogie.org/bind-facets/0.5/class-ICanBoogie.Binding.Facets.ModelBindings.html
+[Model]:         http://api.icanboogie.org/activerecord/3.0/class-ICanBoogie.ActiveRecord.Model.html
+[documentation]: http://api.icanboogie.org/bind-facets/0.6/
+[ModelBindings]: http://api.icanboogie.org/bind-facets/0.6/class-ICanBoogie.Binding.Facets.ModelBindings.html
 
 [icanboogie/module]: https://github.com/ICanBoogie/Module
 [icanboogie/facets]: https://github.com/ICanBoogie/Render

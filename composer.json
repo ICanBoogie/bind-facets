@@ -24,8 +24,12 @@
 	"require": {
 		"php": ">=5.5",
 		"icanboogie/icanboogie": "^3.0",
-		"icanboogie/facets": "^0.5",
-		"icanboogie/bind-activerecord": "^2.3"
+		"icanboogie/facets": "^0.6",
+		"icanboogie/bind-activerecord": "^3.0"
+	},
+
+	"require-dev": {
+		"icanboogie/bind-activerecord": "^3.0"
 	},
 
 	"autoload": {
