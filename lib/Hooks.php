@@ -14,7 +14,6 @@ namespace ICanBoogie\Binding\Facets;
 use ICanBoogie\ActiveRecord;
 use ICanBoogie\ActiveRecord\Model;
 use ICanBoogie\Binding\PrototypedBindings;
-use ICanBoogie\Core;
 use ICanBoogie\Facets\CriterionList;
 use ICanBoogie\Facets\Fetcher;
 use ICanBoogie\Facets\Fetcher\BasicFetcher;
