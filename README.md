@@ -1,10 +1,9 @@
 # bind-facets
 
 [![Release](https://img.shields.io/packagist/v/icanboogie/bind-facets.svg)](https://packagist.org/packages/icanboogie/bind-facets)
-[![Build Status](https://img.shields.io/travis/ICanBoogie/bind-facets/master.svg)](http://travis-ci.org/ICanBoogie/bind-facets)
-[![HHVM](https://img.shields.io/hhvm/icanboogie/bind-facets.svg)](http://hhvm.h4cc.de/package/icanboogie/bind-facets)
-[![Code Quality](https://img.shields.io/scrutinizer/g/ICanBoogie/bind-facets/master.svg)](https://scrutinizer-ci.com/g/ICanBoogie/bind-facets)
-[![Code Coverage](https://img.shields.io/coveralls/ICanBoogie/bind-facets/master.svg)](https://coveralls.io/r/ICanBoogie/bind-facets)
+[![Build Status](https://img.shields.io/travis/ICanBoogie/bind-facets.svg)](http://travis-ci.org/ICanBoogie/bind-facets)
+[![Code Quality](https://img.shields.io/scrutinizer/g/ICanBoogie/bind-facets.svg)](https://scrutinizer-ci.com/g/ICanBoogie/bind-facets)
+[![Code Coverage](https://img.shields.io/coveralls/ICanBoogie/bind-facets.svg)](https://coveralls.io/r/ICanBoogie/bind-facets)
 [![Packagist](https://img.shields.io/packagist/dt/icanboogie/bind-facets.svg)](https://packagist.org/packages/icanboogie/bind-facets)
 
 The **icanboogie/bind-facets** package binds [icanboogie/facets][] to [ICanBoogie][],
@@ -123,9 +122,9 @@ The package is continuously tested by [Travis CI](http://about.travis-ci.org/).
 
 
 
-[Model]:         http://api.icanboogie.org/activerecord/3.0/class-ICanBoogie.ActiveRecord.Model.html
-[documentation]: http://api.icanboogie.org/bind-facets/0.7/
-[ModelBindings]: http://api.icanboogie.org/bind-facets/0.7/class-ICanBoogie.Binding.Facets.ModelBindings.html
+[Model]:         https://icanboogie.org/api/activerecord/3.0/class-ICanBoogie.ActiveRecord.Model.html
+[documentation]: https://icanboogie.org/api/bind-facets/0.7/
+[ModelBindings]: https://icanboogie.org/api/bind-facets/0.7/class-ICanBoogie.Binding.Facets.ModelBindings.html
 
 [icanboogie/module]: https://github.com/ICanBoogie/Module
 [icanboogie/facets]: https://github.com/ICanBoogie/Render

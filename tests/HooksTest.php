@@ -11,7 +11,9 @@
 
 namespace ICanBoogie\Binding\Facets;
 
-class HooksTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class HooksTest extends TestCase
 {
 	public function test_synthesize_config()
 	{
