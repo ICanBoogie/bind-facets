@@ -4,41 +4,35 @@
 	"description": "Binds icanboogie/facets to ICanBoogie",
 	"homepage": "https://icanboogie.org/",
 	"license": "BSD-3-Clause",
-
 	"authors": [
 		{
 			"name": "Olivier Laviale",
 			"email": "olivier.laviale@gmail.com",
 			"homepage": "https://olvlvl.com/",
-			"role" : "Developer"
+			"role": "Developer"
 		}
 	],
-
 	"support": {
 		"issues": "https://github.com/ICanBoogie/bind-facets/issues",
 		"source": "https://github.com/ICanBoogie/bind-facets"
 	},
-
 	"minimum-stability": "dev",
+	"prefer-dist": true,
 	"prefer-stable": true,
-
 	"require": {
 		"php": ">=5.6",
 		"icanboogie/icanboogie": "^4.0",
 		"icanboogie/facets": "^0.7",
 		"icanboogie/bind-activerecord": "^4.0"
 	},
-
 	"autoload": {
 		"psr-4": {
 			"ICanBoogie\\Binding\\Facets\\": "lib"
 		}
 	},
-
 	"scripts": {
 		"post-autoload-dump": "ICanBoogie\\Autoconfig\\Hooks::on_autoload_dump"
 	},
-
 	"extra": {
 		"icanboogie": {
 			"config-path": "config",
