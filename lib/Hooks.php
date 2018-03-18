@@ -28,7 +28,7 @@ class Hooks
 	 *
 	 * @return array
 	 */
-	static public function synthesize_config(array $fragments)
+	static public function synthesize_config(array $fragments): array
 	{
 		$facets = [];
 
@@ -48,7 +48,7 @@ class Hooks
 					continue;
 				}
 
-				$facets[$model_id] = array_merge($facets[$model_id], $criteria);
+				$facets[$model_id] = \array_merge($facets[$model_id], $criteria);
 			}
 		}
 
@@ -64,7 +64,7 @@ class Hooks
 	 *
 	 * @return array
 	 */
-	static public function criteria_from(Model $model)
+	static public function criteria_from(Model $model): array
 	{
 		$criteria_list = [];
 		$facets = $model->app->configs['activerecord_facets'];
@@ -88,7 +88,7 @@ class Hooks
 			return [];
 		}
 
-		return call_user_func_array('array_merge', array_reverse($criteria_list));
+		return \array_merge(...\array_reverse($criteria_list));
 	}
 
 	/**
@@ -98,7 +98,7 @@ class Hooks
 	 *
 	 * @return CriterionList
 	 */
-	static public function criterion_list_from(Model $model)
+	static public function criterion_list_from(Model $model): CriterionList
 	{
 		static $instances = [];
 
@@ -125,7 +125,7 @@ class Hooks
 	 *
 	 * @return RecordCollection|null
 	 */
-	static public function fetch_records(Model $model, array $conditions)
+	static public function fetch_records(Model $model, array $conditions): ?RecordCollection
 	{
 		$fetcher = new BasicFetcher($model);
 		$records = $fetcher($conditions);
@@ -152,7 +152,7 @@ class Hooks
 	 *
 	 * @return ActiveRecord|null
 	 */
-	static public function fetch_record(Model $model, array $conditions, &$fetcher = null)
+	static public function fetch_record(Model $model, array $conditions, &$fetcher = null): ?ActiveRecord
 	{
 		$records = $model->fetch_records($conditions + [ 'limit' => 1 ]);
 

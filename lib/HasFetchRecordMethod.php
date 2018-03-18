@@ -29,5 +29,5 @@ interface HasFetchRecordMethod
 	 *
 	 * @return RecordCollection
 	 */
-	public function fetch_record(array $conditions, &$fetcher = null);
+	public function fetch_record(array $conditions, &$fetcher = null): RecordCollection;
 }

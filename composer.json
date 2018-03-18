@@ -20,15 +20,20 @@
 	"prefer-dist": true,
 	"prefer-stable": true,
 	"require": {
-		"php": ">=5.6",
-		"icanboogie/icanboogie": "^4.0",
-		"icanboogie/facets": "^0.7",
-		"icanboogie/bind-activerecord": "^4.0"
+		"php": "^7.2",
+		"icanboogie/icanboogie": "^5.0",
+		"icanboogie/bind-activerecord": "^5.0",
+		"icanboogie/facets": "^0.8"
 	},
 	"autoload": {
 		"psr-4": {
 			"ICanBoogie\\Binding\\Facets\\": "lib"
 		}
+	},
+	"autoload-dev": {
+		"classmap": [
+			"tests/Application.php"
+		]
 	},
 	"scripts": {
 		"post-autoload-dump": "ICanBoogie\\Autoconfig\\Hooks::on_autoload_dump"
