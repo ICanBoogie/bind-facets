@@ -36,12 +36,12 @@ use ICanBoogie\Facets\RecordCollection;
 
 /**
  * @param Model|ModelBindings
- * 
+ *
  * @return RecordCollection
  */
 function fetch(Model $model, array $conditions)
 {
-	return $model->fetch_records($conditions;
+    return $model->fetch_records($conditions;
 }
 ```
 
@@ -57,7 +57,7 @@ function fetch(Model $model, array $conditions)
 
 ## Requirements
 
-The package requires PHP 5.6 or later.
+The package requires PHP 7.2 or later.
 
 
 
@@ -65,22 +65,9 @@ The package requires PHP 5.6 or later.
 
 ## Installation
 
-The recommended way to install this package is through [Composer](http://getcomposer.org/):
-
+```bash
+composer require icanboogie/bind-facets
 ```
-$ composer require icanboogie/bind-facets
-```
-
-
-
-
-
-### Cloning the repository
-
-The package is [available on GitHub](https://github.com/ICanBoogie/bind-facets), its repository can be
-cloned with the following command line:
-
-	$ git clone https://github.com/ICanBoogie/bind-facets.git
 
 
 
@@ -100,16 +87,9 @@ cleaned with the `make clean` command.
 
 ## Testing
 
-The test suite is ran with the `make test` command. [PHPUnit](https://phpunit.de/) and
-[Composer](http://getcomposer.org/) need to be globally available to run the suite.
-The command installs dependencies as required. The `make test-coverage` command runs test suite and
-also creates an HTML coverage report in "build/coverage". The directory can later be cleaned with
-the `make clean` command.
-
-The package is continuously tested by [Travis CI](http://about.travis-ci.org/).
-
-[![Build Status](https://img.shields.io/travis/ICanBoogie/bind-facets/master.svg)](https://travis-ci.org/ICanBoogie/bind-facets)
-[![Code Coverage](https://img.shields.io/coveralls/ICanBoogie/bind-facets/master.svg)](https://coveralls.io/r/ICanBoogie/bind-facets)
+Run `make test-container` to create and log into the test container, then run `make test` to run the
+test suite. Alternatively, run `make test-coverage` to run the test suite with test coverage. Open
+`build/coverage/index.html` to see the breakdown of the code coverage.
 
 
 
@@ -117,14 +97,14 @@ The package is continuously tested by [Travis CI](http://about.travis-ci.org/).
 
 ## License
 
-**icanboogie/bind-facets** is licensed under the New BSD License - See the [LICENSE](LICENSE) file for details.
+**icanboogie/bind-facets** is released under the [New BSD License](LICENSE).
 
 
 
 
-[Model]:         https://icanboogie.org/api/activerecord/3.0/class-ICanBoogie.ActiveRecord.Model.html
-[documentation]: https://icanboogie.org/api/bind-facets/0.7/
-[ModelBindings]: https://icanboogie.org/api/bind-facets/0.7/class-ICanBoogie.Binding.Facets.ModelBindings.html
+[Model]:         https://icanboogie.org/api/activerecord/master/class-ICanBoogie.ActiveRecord.Model.html
+[documentation]: https://icanboogie.org/api/bind-facets/master/
+[ModelBindings]: https://icanboogie.org/api/bind-facets/master/class-ICanBoogie.Binding.Facets.ModelBindings.html
 
 [icanboogie/module]: https://github.com/ICanBoogie/Module
 [icanboogie/facets]: https://github.com/ICanBoogie/Render
