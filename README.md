@@ -1,7 +1,7 @@
 # bind-facets
 
 [![Release](https://img.shields.io/packagist/v/icanboogie/bind-facets.svg)](https://packagist.org/packages/icanboogie/bind-facets)
-[![Build Status](https://img.shields.io/travis/ICanBoogie/bind-facets.svg)](http://travis-ci.org/ICanBoogie/bind-facets)
+[![Build Status](https://img.shields.io/github/workflow/status/ICanBoogie/bind-facets/test)](https://github.com/ICanBoogie/bind-facets/actions?query=workflow%3Atest)
 [![Code Quality](https://img.shields.io/scrutinizer/g/ICanBoogie/bind-facets.svg)](https://scrutinizer-ci.com/g/ICanBoogie/bind-facets)
 [![Code Coverage](https://img.shields.io/coveralls/ICanBoogie/bind-facets.svg)](https://coveralls.io/r/ICanBoogie/bind-facets)
 [![Packagist](https://img.shields.io/packagist/dt/icanboogie/bind-facets.svg)](https://packagist.org/packages/icanboogie/bind-facets)
