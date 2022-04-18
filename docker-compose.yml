@@ -4,7 +4,7 @@ services:
   app:
     build: .
     environment:
-        PHP_IDE_CONFIG: 'serverName=icanboogie-bind-activerecord'
+        PHP_IDE_CONFIG: 'serverName=icanboogie-bind-facets'
     volumes:
     - .:/app:delegated
     - ~/.composer:/root/.composer:delegated

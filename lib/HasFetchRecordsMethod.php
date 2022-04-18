@@ -21,5 +21,8 @@ use ICanBoogie\Facets\RecordCollection;
  */
 interface HasFetchRecordsMethod
 {
-	public function fetch_records(array $conditions): RecordCollection;
+    /**
+     * @param array<string, mixed> $conditions
+     */
+    public function fetch_records(array $conditions): RecordCollection;
 }

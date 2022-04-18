@@ -22,5 +22,4 @@ use ICanBoogie\Facets\CriterionList;
  */
 interface HasCriterionListProperty
 {
-
 }

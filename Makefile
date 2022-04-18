@@ -38,6 +38,11 @@ test-container:
 	@-docker-compose run --rm app bash
 	@docker-compose down -v
 
+.PHONY: lint
+lint:
+	@phpcs
+	@vendor/bin/phpstan
+
 .PHONY: doc
 doc: vendor
 	@mkdir -p build/docs

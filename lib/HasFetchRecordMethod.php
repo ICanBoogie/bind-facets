@@ -22,12 +22,12 @@ use ICanBoogie\Facets\RecordCollection;
  */
 interface HasFetchRecordMethod
 {
-	/**
-	 * @param array $conditions
-	 * @param Fetcher $fetcher If the parameter `fetcher` is present, the {@link Fetcher}
-	 * instance used to fetch the record is stored inside.
-	 *
-	 * @return RecordCollection
-	 */
-	public function fetch_record(array $conditions, &$fetcher = null): RecordCollection;
+    /**
+     * @param array $conditions
+     * @param Fetcher|null $fetcher If the parameter `fetcher` is present, the {@link Fetcher}
+     * instance used to fetch the record is stored inside.
+     *
+     * @return RecordCollection
+     */
+    public function fetch_record(array $conditions, Fetcher &$fetcher = null): RecordCollection;
 }

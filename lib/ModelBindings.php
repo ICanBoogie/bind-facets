@@ -24,33 +24,33 @@ use ICanBoogie\Facets\RecordCollection;
  */
 trait ModelBindings
 {
-	/**
-	 * Fetches the records matching the specified conditions.
-	 *
-	 * A {@link Fetcher} instance is used to fetch the records.
-	 *
-	 * @param array $conditions
-	 *
-	 * @return RecordCollection
-	 */
-	public function fetch_records(array $conditions)
-	{
-		return parent::fetch_records($conditions);
-	}
+    /**
+     * Fetches the records matching the specified conditions.
+     *
+     * A {@link Fetcher} instance is used to fetch the records.
+     *
+     * @param array $conditions
+     *
+     * @return RecordCollection
+     */
+    public function fetch_records(array $conditions)
+    {
+        return parent::fetch_records($conditions);
+    }
 
-	/**
-	 * Fetches a record matching the specified conditions.
-	 *
-	 * The model's {@link fetch_records} prototype method is used to retrieve the record.
-	 *
-	 * @param array $conditions
-	 * @param Fetcher $fetcher If the parameter `fetcher` is present, the {@link Fetcher}
-	 * instance created to fetch the record is stored inside.
-	 *
-	 * @return ActiveRecord|null
-	 */
-	public function fetch_record(array $conditions, &$fetcher = null)
-	{
-		return parent::fetch_record($conditions, $fetcher);
-	}
+    /**
+     * Fetches a record matching the specified conditions.
+     *
+     * The model's {@link fetch_records} prototype method is used to retrieve the record.
+     *
+     * @param array<string, mixed> $conditions
+     * @param Fetcher|null $fetcher If the parameter `fetcher` is present, the {@link Fetcher}
+     * instance created to fetch the record is stored inside.
+     *
+     * @return ActiveRecord|null
+     */
+    public function fetch_record(array $conditions, Fetcher &$fetcher = null)
+    {
+        return parent::fetch_record($conditions, $fetcher);
+    }
 }

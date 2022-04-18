@@ -15,92 +15,92 @@ use PHPUnit\Framework\TestCase;
 
 class HooksTest extends TestCase
 {
-	public function test_synthesize_config()
-	{
-		$config = Hooks::synthesize_config([
+    public function test_synthesize_config()
+    {
+        $config = Hooks::synthesize_config([
 
-			uniqid() => [
+            uniqid() => [
 
-				'facets' => [
+                'facets' => [
 
-					'nodes' => [
+                    'nodes' => [
 
-						'nid' => 'App\Modules\Nodes\NidCriterion',
-						'title' => 'App\Modules\Nodes\TitleCriterion'
+                        'nid' => 'App\Modules\Nodes\NidCriterion',
+                        'title' => 'App\Modules\Nodes\TitleCriterion'
 
-					],
+                    ],
 
-					'articles' => [
+                    'articles' => [
 
-						'date' => 'App\Modules\Articles\DateCriterion'
+                        'date' => 'App\Modules\Articles\DateCriterion'
 
-					]
+                    ]
 
-				],
+                ],
 
-				uniqid() => uniqid()
+                uniqid() => uniqid()
 
-			],
+            ],
 
-			uniqid() => [
+            uniqid() => [
 
-			],
+            ],
 
-			uniqid() => [
+            uniqid() => [
 
-				uniqid() => uniqid(),
+                uniqid() => uniqid(),
 
-				'facets' => [
+                'facets' => [
 
-					'nodes' => [
+                    'nodes' => [
 
-						'slug' => 'App\Modules\Nodes\SlugCriterion'
+                        'slug' => 'App\Modules\Nodes\SlugCriterion'
 
-					],
+                    ],
 
-					'articles' => [
+                    'articles' => [
 
-						'is_online' => 'App\Modules\Articles\IsOnlineCriterion'
+                        'is_online' => 'App\Modules\Articles\IsOnlineCriterion'
 
-					],
+                    ],
 
-					'comments' => [
+                    'comments' => [
 
-						'author' => 'App\Modules\Comments\AuthorCriterion'
+                        'author' => 'App\Modules\Comments\AuthorCriterion'
 
-					]
+                    ]
 
-				],
+                ],
 
-				uniqid() => uniqid()
+                uniqid() => uniqid()
 
-			]
+            ]
 
-		]);
+        ]);
 
-		$this->assertSame([
+        $this->assertSame([
 
-			'nodes' => [
+            'nodes' => [
 
-				'nid' => 'App\Modules\Nodes\NidCriterion',
-				'title' => 'App\Modules\Nodes\TitleCriterion',
-				'slug' => 'App\Modules\Nodes\SlugCriterion'
+                'nid' => 'App\Modules\Nodes\NidCriterion',
+                'title' => 'App\Modules\Nodes\TitleCriterion',
+                'slug' => 'App\Modules\Nodes\SlugCriterion'
 
-			],
+            ],
 
-			'articles' => [
+            'articles' => [
 
-				'date' => 'App\Modules\Articles\DateCriterion',
-				'is_online' => 'App\Modules\Articles\IsOnlineCriterion'
+                'date' => 'App\Modules\Articles\DateCriterion',
+                'is_online' => 'App\Modules\Articles\IsOnlineCriterion'
 
-			],
+            ],
 
-			'comments' => [
+            'comments' => [
 
-				'author' => 'App\Modules\Comments\AuthorCriterion'
+                'author' => 'App\Modules\Comments\AuthorCriterion'
 
-			]
+            ]
 
-		], $config);
-	}
+        ], $config);
+    }
 }

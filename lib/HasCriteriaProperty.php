@@ -20,5 +20,4 @@ namespace ICanBoogie\Binding\Facets;
  */
 interface HasCriteriaProperty
 {
-
 }

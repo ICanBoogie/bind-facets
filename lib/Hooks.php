@@ -19,150 +19,144 @@ use ICanBoogie\Facets\Fetcher;
 use ICanBoogie\Facets\Fetcher\BasicFetcher;
 use ICanBoogie\Facets\RecordCollection;
 
+use function array_merge;
+use function array_reverse;
+use function ICanBoogie\emit;
+
 class Hooks
 {
-	/**
-	 * Synthesizes the `activerecord_facets` config from `activerecord` fragments.
-	 *
-	 * @param array $fragments
-	 *
-	 * @return array
-	 */
-	static public function synthesize_config(array $fragments): array
-	{
-		$facets = [];
+    /**
+     * Synthesizes the `activerecord_facets` config from `activerecord` fragments.
+     *
+     * @param array $fragments
+     *
+     * @return array
+     */
+    public static function synthesize_config(array $fragments): array
+    {
+        $facets = [];
 
-		foreach ($fragments as $fragment)
-		{
-			if (empty($fragment['facets']))
-			{
-				continue;
-			}
+        foreach ($fragments as $fragment) {
+            if (empty($fragment['facets'])) {
+                continue;
+            }
 
-			foreach ($fragment['facets'] as $model_id => $criteria)
-			{
-				if (empty($facets[$model_id]))
-				{
-					$facets[$model_id] = $criteria;
+            foreach ($fragment['facets'] as $model_id => $criteria) {
+                if (empty($facets[$model_id])) {
+                    $facets[$model_id] = $criteria;
 
-					continue;
-				}
+                    continue;
+                }
 
-				$facets[$model_id] = \array_merge($facets[$model_id], $criteria);
-			}
-		}
+                $facets[$model_id] = array_merge($facets[$model_id], $criteria);
+            }
+        }
 
-		return $facets;
-	}
+        return $facets;
+    }
 
-	/**
-	 * Returns the criteria associated with the specified model.
-	 *
-	 * The criteria include the criteria of the parent models.
-	 *
-	 * @param Model|PrototypedBindings $model
-	 *
-	 * @return array
-	 */
-	static public function criteria_from(Model $model): array
-	{
-		$criteria_list = [];
-		$facets = $model->app->configs['activerecord_facets'];
+    /**
+     * Returns the criteria associated with the specified model.
+     *
+     * The criteria include the criteria of the parent models.
+     *
+     * @param Model|PrototypedBindings $model
+     *
+     * @return array
+     */
+    public static function criteria_from(Model $model): array
+    {
+        $criteria_list = [];
+        $facets = $model->app->configs['activerecord_facets'];
 
-		$m = $model;
+        $m = $model;
 
-		while ($m)
-		{
-			$id = $m->id;
+        while ($m) {
+            $id = $m->id;
 
-			if (!empty($facets[$id]))
-			{
-				$criteria_list[] = $facets[$id];
-			}
+            if (!empty($facets[$id])) {
+                $criteria_list[] = $facets[$id];
+            }
 
-			$m = $m->parent_model;
-		}
+            $m = $m->parent_model;
+        }
 
-		if (!$criteria_list)
-		{
-			return [];
-		}
+        if (!$criteria_list) {
+            return [];
+        }
 
-		return \array_merge(...\array_reverse($criteria_list));
-	}
+        return array_merge(...array_reverse($criteria_list));
+    }
 
-	/**
-	 * Returns the {@link CriterionList} instance associated with the specified model.
-	 *
-	 * @param Model|ModelBindings $model
-	 *
-	 * @return CriterionList
-	 */
-	static public function criterion_list_from(Model $model): CriterionList
-	{
-		static $instances = [];
+    /**
+     * Returns the {@link CriterionList} instance associated with the specified model.
+     *
+     * @param Model|ModelBindings $model
+     *
+     * @return CriterionList
+     */
+    public static function criterion_list_from(Model $model): CriterionList
+    {
+        static $instances = [];
 
-		$model_id = $model->id;
+        $model_id = $model->id;
 
-		if (isset($instances[$model_id]))
-		{
-			return $instances[$model_id];
-		}
+        if (isset($instances[$model_id])) {
+            return $instances[$model_id];
+        }
 
-		$criteria = $model->criteria;
-		$instances[$model_id] = $criterion_list = new CriterionList($criteria);
+        $criteria = $model->criteria;
+        $instances[$model_id] = $criterion_list = new CriterionList($criteria);
 
-		return $criterion_list;
-	}
+        return $criterion_list;
+    }
 
-	/**
-	 * Fetches the records matching the specified conditions.
-	 *
-	 * A {@link BasicFetcher} instance is used to fetch the records.
-	 *
-	 * @param Model $model
-	 * @param array $conditions
-	 *
-	 * @return RecordCollection|null
-	 */
-	static public function fetch_records(Model $model, array $conditions): ?RecordCollection
-	{
-		$fetcher = new BasicFetcher($model);
-		$records = $fetcher($conditions);
+    /**
+     * Fetches the records matching the specified conditions.
+     *
+     * A {@link BasicFetcher} instance is used to fetch the records.
+     *
+     * @param Model $model
+     * @param array $conditions
+     *
+     * @return RecordCollection|null
+     */
+    public static function fetch_records(Model $model, array $conditions): ?RecordCollection
+    {
+        $fetcher = new BasicFetcher($model);
+        $records = $fetcher($conditions);
 
-		if (!$records)
-		{
-			return null;
-		}
+        if (!$records) {
+            return null;
+        }
 
-		new RecordCollection\AlterEvent($records);
+        emit(new RecordCollection\AlterEvent($records));
 
-		return $records;
-	}
+        return $records;
+    }
 
-	/**
-	 * Fetches a record matching the specified conditions.
-	 *
-	 * The model's {@link fetch_records} prototype method is used to retrieve the record.
-	 *
-	 * @param Model|ModelBindings $model
-	 * @param array $conditions
-	 * @param Fetcher $fetcher If the parameter `fetcher` is present, the {@link Fetcher}
-	 * instance used to fetch the record is stored inside.
-	 *
-	 * @return ActiveRecord|null
-	 */
-	static public function fetch_record(Model $model, array $conditions, &$fetcher = null): ?ActiveRecord
-	{
-		$records = $model->fetch_records($conditions + [ 'limit' => 1 ]);
+    /**
+     * Fetches a record matching the specified conditions.
+     *
+     * The model's {@link fetch_records} prototype method is used to retrieve the record.
+     *
+     * @param Model|ModelBindings $model
+     * @param array $conditions
+     * @param Fetcher|null $fetcher If the parameter `fetcher` is present, the {@link Fetcher}
+     * instance used to fetch the record is stored inside.
+     *
+     * @return ActiveRecord|null
+     */
+    public static function fetch_record(Model $model, array $conditions, Fetcher &$fetcher = null): ?ActiveRecord
+    {
+        $records = $model->fetch_records($conditions + [ 'limit' => 1 ]);
 
-		if (!$records)
-		{
-			return null;
-		}
+        if (!$records) {
+            return null;
+        }
 
-		$fetcher = $records->fetcher;
+        $fetcher = $records->fetcher;
 
-		return $records->one;
-	}
+        return $records->one;
+    }
 }
